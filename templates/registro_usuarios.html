@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MG Accesorios || Registro de Usuarios</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}" />
+    <script
+      src="https://kit.fontawesome.com/f7e8b19d78.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="logo">
+        <img
+          class="logo__imagen"
+          src="{{url_for('static',filename='imagenes/logo.png')}}"
+          alt="Este es el logo"
+        />
+      </div>
+      <div class="titulo">
+        <h1>Inventario de Accesorios</h1>
+      </div>
+    </header>
+    <div class="contenido__administrador">
+      <nav class="contenido__menu">
+        <ul class="menu__contenedor">
+          <li class="menu__info">
+            <div class="menu__avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="menu__rol">
+              <p class="rol__nombre">
+                <span class="rol__label">Nombre:</span> {{nombreAdministrador}}
+              </p>
+              <p class="rol__cargo">
+                <span class="rol__label">Rol:</span> Administrador
+              </p>
+              <p class="rol__id">
+                <span class="rol__label">ID:</span> {{nombreID}}
+              </p>
+            </div>
+          </li>
+          <li class="menu__elemento menu__adminProductos">
+            <a href="/administracion/{{nombreAdministrador}}" class="menu__link"
+              >Administración de Productos</a
+            >
+          </li>
+          <li class="menu__elemento menu__registroUsuarios menu__seleccionado">
+            <a href="/administracion/{{nombreAdministrador}}/registro/" class="menu__link"
+              >Registro de Usuarios</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__crearAccesorio">
+            <a href="/administracion/{{nombreAdministrador}}/crearAccesorio/" class="menu__link"
+              >Crear Accesorio</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__actualElminAccesorio">
+            <a href="/administracion/{{nombreAdministrador}}/editarAccesorio/" class="menu__link"
+              >Actualizar / Eliminar Accesorio</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__consultaUsuario">
+            <a href="/administracion/{{nombreAdministrador}}/consultarUsuario/" class="menu__link"
+              >Consultar Usuarios</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__salir">
+            <a href="/cerrar/" class="menu__link">Salir de Sesión</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="contenido__inventario contenido__crearUsuario">
+        <div class="contenido__forma forma__crearUsuario">
+          <form
+          class="forma__general"
+            action=""
+            method="POST"
+            name="formaRegistro"
+            onsubmit="validarFormaRegistro(event)"
+            novalidate
+          >
+            <div class="forma__titulo">
+              <h3 class="titulo__sesion">Registrar un Nuevo Usuario</h3>
+            </div>
+            <div class="forma__datos">
+              <label class="input__label label__usuario" for="usuario"
+                >Nombre de Usuario:
+                <p class="forma__error forma__error--usuario">{{mensajeUsuario}}</p>
+                </label
+              >
+              <input
+                class="input input__usuario"
+                type="text"
+                name="usuario"
+                id="usuario"
+                placeholder=""
+                onkeyup="validarUsuario()"
+              />
+              <label class="input__label label__password" for="password">Contraseña:
+                <i class="password__icono password__icono--mostrar fas fa-eye" onclick="mostrarPwd()"></i>
+              <i class="password__icono password__icono--ocultar fas fa-eye-slash" onclick="mostrarPwd()"></i>
+                <p class="forma__error forma__error--password">{{mensajeContrasena}}</p>
+              </label>
+              <input
+                class="input input__password"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="" 
+                onkeyup="validarPassword()"
+              />
+              <label class="input__label label__correo" for="correo"
+                >Correo Electrónico:
+                <p class="forma__error forma__error--correo">{{mensajeCorreo}}</p></label
+              >
+              <input
+                class="input input__correo"
+                type="email"
+                name="correo"
+                id="correo"
+                placeholder=""
+                onkeyup="validarCorreo()"
+              />
+            </div>
+            <div class="forma__boton contenedor__crear_usuario">
+              <input
+                class="boton boton__crear_usuario"
+                type="submit"
+                value="Crear Usuario"
+              />
+            </div>
+            <p class="mensaje__enviado">{{mensajeNuevoUs}}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="{{url_for('static',filename='js/main.js')}}"></script> -->
+  </body>
+</html>

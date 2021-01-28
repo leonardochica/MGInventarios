@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MG Accesorios || Crear Accesorio</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}" />
+    <script
+      src="https://kit.fontawesome.com/f7e8b19d78.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="logo">
+        <img
+          class="logo__imagen"
+          src="{{url_for('static',filename='imagenes/logo.png')}}"
+          alt="Este es el logo"
+        />
+      </div>
+      <div class="titulo">
+        <h1>Inventario de Accesorios</h1>
+      </div>
+    </header>
+    <div class="contenido__administrador">
+      <nav class="contenido__menu">
+        <ul class="menu__contenedor">
+          <li class="menu__info">
+            <div class="menu__avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="menu__rol">
+              <p class="rol__nombre">
+                <span class="rol__label">Nombre:</span> {{nombreAdministrador}}
+              </p>
+              <p class="rol__cargo">
+                <span class="rol__label">Rol:</span> Administrador
+              </p>
+              <p class="rol__id">
+                <span class="rol__label">ID:</span> {{nombreID}}
+              </p>
+            </div>
+          </li>
+          <li class="menu__elemento menu__adminProductos">
+            <a href="/administracion/{{nombreAdministrador}}" class="menu__link"
+              >Administración de Productos</a
+            >
+          </li>
+          <li class="menu__elemento menu__registroUsuarios">
+            <a href="/administracion/{{nombreAdministrador}}/registro/" class="menu__link"
+              >Registro de Usuarios</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__crearAccesorio menu__seleccionado">
+            <a href="/administracion/{{nombreAdministrador}}/crearAccesorio/" class="menu__link"
+              >Crear Accesorio</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__actualElminAccesorio">
+            <a href="/administracion/{{nombreAdministrador}}/editarAccesorio/" class="menu__link"
+              >Actualizar / Eliminar Accesorio</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__consultaUsuario">
+            <a href="/administracion/{{nombreAdministrador}}/consultarUsuario/" class="menu__link"
+              >Consultar Usuarios</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__salir">
+            <a href="/cerrar/" class="menu__link">Salir de Sesión</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="contenido__inventario contenido__crearAccesorio">
+        <div class="contenido__forma forma__crearAccesorio">
+          <form
+            class="forma__general"
+            action=""
+            method="POST"
+            name="formaCrearProducto"
+            enctype="multipart/form-data"
+            onsubmit="validarFormaCrearProducto(event)"
+            novalidate
+          >
+            <div class="forma__titulo">
+              <h3 class="titulo__sesion">Crear un Nuevo Accesorio</h3>
+            </div>
+            <div class="forma__datos">
+              <label class="input__label label__id" for="identificador"
+                >Identificador del Producto:
+                <p class="forma__error forma__error--productoID">{{ mensajeId }}</p>
+              </label>
+              <input
+                class="input"
+                type="text"
+                name="identificador"
+                id="identificador"
+                placeholder=""
+                onkeyup="validarID()"
+              />
+              <label class="input__label label__producto" for="producto"
+                >Nombre del Producto:
+                <p class="forma__error forma__error--productoNombre">{{mensajeNombre}}</p>
+              </label>
+              <input
+                class="input"
+                type="text"
+                name="producto"
+                id="producto"
+                placeholder=""
+                onkeyup="validarProducto()"
+              />
+              <label class="input__label label__cantidad" for="cantidad">
+                Cantidad:
+                <p class="forma__error forma__error--productoCantidad">{{mensajeCantidad}}</p>
+              </label>
+              <input
+                class="input"
+                type="number"
+                name="cantidad"
+                id="cantidad"
+                placeholder=""
+                onkeyup="validarCantidad()"
+              />
+              <label class="input__label label__imagen" for="imagen">
+                Imagen:
+                <p class="forma__error forma__error--productoImagen">{{mensajeImagen}}</p>
+              </label>
+              <input
+                class="input input__imagen"
+                type="file"
+                name="imagen"
+                id="imagen"
+                accept=".jpg,.jpeg,.png"
+                placeholder=""
+              />
+            </div>
+            <div class="forma__boton contenedor__crear_producto">
+              <input
+                class="boton boton__crear_producto"
+                type="submit"
+                value="Crear Producto"
+              />
+            </div>
+            <p class="mensaje_accesorioCreado">{{mensajeConfirmado}}</p>
+            <p class="mensaje_accesorioError">{{mensajeError}}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="{{url_for('static',filename='js/main.js')}}"></script> -->
+  </body>
+</html>

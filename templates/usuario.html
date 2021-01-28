@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MG Accesorios ||  Usuarios</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}" />
+    <script
+      src="https://kit.fontawesome.com/f7e8b19d78.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="logo">
+        <img
+          class="logo__imagen"
+          src="{{url_for('static',filename='imagenes/logo.png')}}"
+          alt="Este es el logo"
+        />
+      </div>
+      <div class="titulo">
+        <h1>Inventario de Accesorios</h1>
+      </div>
+    </header>
+    <div class="contenido__usuario">
+      <nav class="contenido__menu">
+        <ul class="menu__contenedor">
+          <li class="menu__info">
+            <div class="menu__avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="menu__rol">
+              <p class="rol__nombre">
+                <span class="rol__label">Nombre:</span> {{nombreUsuario}}
+              </p>
+              <p class="rol__cargo">
+                <span class="rol__label">Rol:</span> Usuario
+              </p>
+              <p class="rol__id">
+                <span class="rol__label">ID:</span> {{nombreID}}
+              </p>
+            </div>
+          </li>
+          <li class="menu__elemento menu__adminProductos menu__seleccionado">
+            <a href="/usuario/{{nombreUsuario}}" class="menu__link">Catálogo de Productos</a>
+          </li>
+
+          <li class="menu__elemento menu__salir">
+            <a href="/cerrar/" class="menu__link">Salir de Sesión</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="contenido__pagina">
+        <div class="contenido__inventario">
+          <div class="inventario__encabezado">
+            <div class="encabezado__buscador">
+              <p class="buscar__etiqueta">Buscar:</p>
+              <input
+                class="input input__buscar"
+                type="search"
+                name="buscarProducto"
+                id="buscarProductoAdmin"
+                placeholder="bolso,billetera,..."
+                onkeyup="filtrarProductos()"
+              />
+            </div>
+            <div class="encabezado__titulo">
+              <h2 class="inventario__titulo">Catálogo de Productos</h2>
+            </div>
+          </div>
+          <ul class="galeria">
+            {% for producto in productosLista%}
+            <li>
+              <p class="idAccesorio">ID: {{producto[0]}}</p>
+              <a href="/usuario/{{nombreUsuario}}/{{producto[0]}}"
+                ><img
+                  src="{{url_for('static',filename='imagenes/cargadas/')}}{{producto[3]}}"
+                  alt="{{producto[1]}}"
+                  class="imagenAccesorio"
+                />
+              </a>
+              <p class="nombreAccesorio">{{producto[1]}}</p>
+              <p class="cantAccesorio">Cantidad: {{producto[2]}}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="{{url_for('static',filename='js/admin.js')}}"></script>
+  </body>
+</html>

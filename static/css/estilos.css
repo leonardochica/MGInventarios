@@ -1,0 +1,754 @@
+:root {
+  --color-principal: #1a29a2;
+  --color-medio: #6670c1;
+  --color-claro: #d0e2f4;
+  --color-secundario: #2c41dd;
+  --color-gris: rgb(233, 225, 225);
+  --color-gris-oscuro: #d2d2d2;
+  --color-error: #e43939;
+  --color-confirmacion: #1f1aa2;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  box-sizing: border-box;
+  background: var(--color-gris);
+}
+
+/* Utilidades */
+.boton {
+  width: 100%;
+  height: 30px;
+  border: none;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.boton:hover {
+  background: var(--color-principal);
+  transition: all 0.5s;
+}
+
+.forma__general {
+  padding: 20px 0px;
+  margin: auto;
+  border: 3px solid #555;
+  background: #d0e2f4;
+  width: 380px;
+}
+
+.input {
+  height: 32px;
+  border-radius: 5px;
+  border: 1px solid var(--color-medio);
+  padding: 2px 2px 2px 8px;
+}
+
+/* Cabecera */
+.cabecera {
+  background: var(--color-principal);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 15vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.logo {
+  margin-left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo__imagen {
+  width: 60px;
+}
+
+.titulo {
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+/* Contenido Pagina */
+.contenido__principal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 85vh;
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  box-sizing: border-box;
+}
+
+/* Imagen */
+.contenido__imagen {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen__principal {
+  background-size: cover;
+  box-sizing: border-box;
+  width: 450px;
+  display: block;
+  margin-left: auto;
+  border-radius: 5px;
+}
+
+/* Formulario */
+.contenido__forma {
+  flex: 1;
+}
+
+.titulo__sesion {
+  text-align: center;
+}
+
+.forma__titulo {
+  width: 70%;
+  margin: 0 auto;
+  color: var(--color-principal);
+}
+.password__icono {
+  position: absolute;
+  top: 30px;
+  left: 88%;
+  color: #1a29a2;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.password__icono--ocultar {
+  visibility: hidden;
+}
+
+.label__password,
+.label__usuario,
+.label__correo,
+.label__id,
+.label__producto,
+.label__cantidad,
+.label__imagen {
+  position: relative;
+}
+
+.forma__datos {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.forma__boton {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.boton__iniciar {
+  height: 30px;
+}
+
+.input__label {
+  margin: 25px 0 2px 0;
+}
+
+.checkbox__admin {
+  margin: 10px 0 20px 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.checkbox__admin input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.checkbox__admin .input__label {
+  color: var(--color-medio);
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.link__olvidar {
+  display: block;
+  text-decoration: none;
+  text-align: right;
+  width: 80%;
+  margin: 10px auto;
+  font-size: 14px;
+  color: var(--color-principal);
+}
+
+.link__olvidar:hover {
+  color: blue;
+}
+
+.forma__error {
+  position: absolute;
+  font-size: 13px;
+  color: var(--color-error);
+  top: 47px;
+  left: 5px;
+}
+
+.forma__mensajes {
+  position: relative;
+}
+
+.forma__mensajes--validacion {
+  font-size: 16px;
+  color: var(--color-error);
+  width: 80%;
+  height: 20px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 850px) {
+  .contenido__principal,
+  .contenido__password {
+    flex-direction: column;
+  }
+
+  .titulo {
+    font-size: 12px;
+  }
+
+  .imagen__principal,
+  .imagen__password {
+    width: 200px;
+  }
+
+  .contenido__imagen {
+    flex: 0;
+    margin-bottom: 20px;
+  }
+  .contenido__forma {
+    flex: 0;
+  }
+}
+
+/* =========================================================
+Pagina Recuperar Contrasena
+============================================================
+*/
+
+.contenido__password {
+  display: flex;
+  flex-direction: row;
+  margin: 200px 50px 100px 50px;
+}
+
+.imagen__password {
+  width: 345px;
+  object-fit: contain;
+}
+
+.forma__password {
+  /* height: 300px; */
+}
+
+.forma__password .input__correo {
+  height: 40px;
+  font-size: large;
+  margin: 10px 0;
+}
+
+.boton__enviar {
+  height: 38px;
+  margin-top: 17px;
+  font-size: 14px;
+}
+
+.forma__password .forma__error--correo {
+  top: 68px;
+}
+
+.forma__link {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
+
+.link__volver {
+  text-decoration: none;
+  margin-top: 20px;
+  font-size: 16px;
+  color: var(--color-principal);
+}
+
+.link__volver:hover {
+  color: blue;
+}
+
+.mensaje__enviado {
+  color: var(--color-confirmacion);
+  font-size: 15px;
+  margin: 20px auto 10px auto;
+  width: 80%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 850px) {
+  .contenido__password {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+  }
+
+  .imagen__password {
+    width: 180px;
+  }
+}
+
+/* =========================================================
+Menu Administrador / Usuario
+============================================================
+*/
+
+.contenido__administrador {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 85vh;
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  box-sizing: border-box;
+}
+
+.contenido__menu {
+  min-width: 350px;
+  background: var(--color-gris-oscuro);
+  height: 85vh;
+}
+
+.menu__contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  list-style: none;
+  border-left: 15px solid var(--color-principal);
+  margin: 0;
+  padding: 0;
+}
+
+/* Menu: Avatar con info */
+.menu__info {
+  display: flex;
+  align-items: center;
+  background: var(--color-gris-oscuro);
+}
+
+.menu__avatar {
+  margin: 0 15px;
+}
+
+.menu__avatar i {
+  font-size: 40px;
+  padding: 10px;
+  background: #000;
+  border-radius: 50%;
+  color: var(--color-gris-oscuro);
+}
+
+.menu__rol {
+  font-size: 13px;
+}
+
+.rol__label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Lista de Elementos de navegabilidad */
+.menu__elemento {
+  border-top: 1px solid white;
+  background: var(--color-claro);
+}
+
+.menu__elemento:nth-of-type(2) {
+  border: none;
+}
+
+.menu__elemento:hover {
+  background: var(--color-secundario);
+}
+
+.menu__elemento:hover .menu__link {
+  color: white;
+}
+
+.menu__link {
+  text-decoration: none;
+  display: block;
+  color: var(--color-principal);
+  cursor: pointer;
+  padding: 20px 15px;
+}
+
+.menu__seleccionado {
+  background: var(--color-principal);
+}
+
+.menu__seleccionado .menu__link {
+  color: white;
+}
+
+.buscar__etiqueta,
+.buscador__label {
+  color: var(--color-principal);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* =========================================================
+Media Queries
+============================================================
+*/
+@media only screen and (max-height: 650px) and (max-width: 850px) {
+  .contenido__imagen {
+    display: none;
+  }
+}
+
+/* 
+=========================================================
+Pagina Crear Accesorio
+============================================================
+*/
+.contenido__crearAccesorio {
+  flex: 1;
+}
+
+.forma__crearAccesorio {
+  padding: 10px;
+}
+
+.contenedor__crear_producto {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.input__imagen {
+  border: none;
+}
+
+.forma__crearAccesorio .forma__error--productoImagen {
+  top: 35px;
+}
+
+.mensaje_accesorioCreado {
+  color: var(--color-confirmacion);
+  font-size: 20px;
+  margin: 20px auto 10px auto;
+  width: 80%;
+  text-align: center;
+}
+
+.mensaje_accesorioError {
+  color: var(--color-error);
+  font-size: 20px;
+  margin: 20px auto 10px auto;
+  width: 80%;
+  text-align: center;
+}
+
+/* 
+=========================================================
+Pagina Crear Usuario
+============================================================
+*/
+.contenido__crearUsuario {
+  flex: 1;
+}
+
+.forma__crearUsuario {
+  padding: 10px;
+}
+
+.contenedor__crear_usuario {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.forma__crearUsuario .forma__error--correo {
+  top: 47px;
+}
+
+.boton__crear_usuario {
+  margin-top: 15px;
+}
+/* 
+=========================================================
+Pagina Actualizar / Eliminar Accesorio
+============================================================
+*/
+
+.contenido__actualizarEliminar {
+  display: flex;
+  margin-top: 15vh;
+}
+
+.contenido__pagina {
+  width: 100%;
+  padding: 25px 20px;
+}
+
+.inventario__encabezado {
+  display: flex;
+
+  /* border: 1px solid green; */
+}
+
+.encabezado__buscador {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input__buscar {
+  margin: 0 5px;
+}
+
+.input__buscar::placeholder {
+  color: #c2c2c2;
+}
+
+.encabezado__titulo {
+  color: var(--color-principal);
+  margin: 0 auto;
+}
+
+.inventario__galeria {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: var(--color-claro);
+  padding: 15px;
+}
+
+.inventario__producto {
+  border: 2px solid var(--color-principal);
+  color: var(--color-principal);
+  margin: 10px;
+}
+
+.inventario__id {
+  margin: 5px;
+}
+
+.producto__id {
+  margin: 2px 10px;
+  text-align: center;
+}
+
+.inventario__imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.producto__imagen {
+  width: 225px;
+  height: 225px;
+  border-radius: 5px;
+}
+
+.producto__etiqueta {
+  font-size: 14px;
+}
+
+.inventario__cargarImagen {
+  padding: 2px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cargarImagen__label {
+  margin: 5px 0;
+}
+
+.inventario__nombre {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+}
+.inventario__cantidad {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+}
+.inventario__boton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.producto__nombre,
+.producto__cantidad {
+  height: 20px;
+}
+
+.producto__nombre {
+  width: 100%;
+  margin-left: 10px;
+}
+.producto__cantidad {
+  width: 30px;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.boton__actualizar,
+.boton__eliminar {
+  width: 90%;
+  margin: 5px;
+}
+
+/* 
+=========================================================
+Pagina Administrador de Productos
+============================================================
+*/
+
+.contenido__administradorProductos {
+  display: flex;
+  margin-top: 15vh;
+}
+
+/* 
+=========================================================
+Pagina Usuario
+============================================================
+*/
+
+.contenido__usuario {
+  display: flex;
+  margin-top: 15vh;
+  width: 100%;
+}
+
+.galeria {
+  width: 100%;
+  list-style: none;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: var(--color-claro);
+}
+
+.galeria li {
+  border: 2px solid var(--color-principal);
+  padding: 5px;
+  margin: 10px;
+}
+
+.galeria li a:hover img {
+  box-shadow: 2px 3px 10px 0 #000;
+}
+
+.galeria img {
+  width: 100%;
+  margin-bottom: 1px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.idAccesorio {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+.nombreAccesorio {
+  margin: 0;
+  padding: 5px;
+  color: var(--color-principal);
+}
+
+.cantAccesorio {
+  margin: 0;
+  padding: 5px;
+}
+
+.imagenAccesorio {
+  width: 225px;
+  height: 225px;
+  border-radius: 5px;
+}
+
+/* 
+=========================================================
+Pagina Consulta de Usuario en Admin
+============================================================
+*/
+
+.usuarios {
+  list-style: none;
+  box-sizing: border-box;
+  background: var(--color-claro);
+  border: 4px solid var(--color-principal);
+  padding: 15px;
+}
+
+.usuarios .usuarioDatos {
+  width: 80%;
+  display: flex;
+  align-items: stretch;
+  border: 2px solid #000;
+  padding: 0;
+  margin: 5px auto;
+}
+
+.usuarioDatos__id,
+.usuarioDatos__idUsuario,
+.usuarioDatos__nombreUsuario,
+.usuarioDatos__idAccesorio,
+.usuarioDatos__fecha {
+  padding: 10px 15px;
+  margin: 0;
+}
+
+.usuarioDatos__id {
+  color: white;
+  background-color: var(--color-principal);
+}
+
+.usuarioDatos__idUsuario,
+.usuarioDatos__nombreUsuario {
+  flex-basis: 90px;
+}
+
+.usuarioDatos__idAccesorio {
+  margin-left: auto;
+  flex-basis: 120px;
+  color: var(--color-);
+}
+
+/* .usuarioDatos__fecha {
+  margin-right: 30px;
+} */

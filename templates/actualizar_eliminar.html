@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Last-Modified" content="0" /> -->
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate" />
+    <title>MG Accesorios || Actualizar / Eliminar Accesorio</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/estilos.css')}}"
+    />
+    <script
+      src="https://kit.fontawesome.com/f7e8b19d78.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="logo">
+        <img
+          class="logo__imagen"
+          src="{{url_for('static',filename='imagenes/logo.png')}}"
+          alt="Este es el logo"
+        />
+      </div>
+      <div class="titulo">
+        <h1>Inventario de Accesorios</h1>
+      </div>
+    </header>
+    <div class="contenido__actualizarEliminar">
+      <nav class="contenido__menu">
+        <ul class="menu__contenedor">
+          <li class="menu__info">
+            <div class="menu__avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="menu__rol">
+              <p class="rol__nombre">
+                <span class="rol__label">Nombre:</span> {{nombreAdministrador}}
+              </p>
+              <p class="rol__cargo">
+                <span class="rol__label">Rol:</span> Administrador
+              </p>
+              <p class="rol__id">
+                <span class="rol__label">ID:</span> {{nombreID}}
+              </p>
+            </div>
+          </li>
+          <li class="menu__elemento menu__adminProductos">
+            <a href="/administracion/{{nombreAdministrador}}" class="menu__link"
+              >Administración de Productos</a
+            >
+          </li>
+          <li class="menu__elemento menu__registroUsuarios">
+            <a href="/administracion/{{nombreAdministrador}}/registro/" class="menu__link"
+              >Registro de Usuarios</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__crearAccesorio">
+            <a href="/administracion/{{nombreAdministrador}}/crearAccesorio/" class="menu__link"
+              >Crear Accesorio</a
+            >
+          </li>
+
+          <li
+            class="menu__elemento menu__actualElminAccesorio menu__seleccionado"
+          >
+            <a href="/administracion/{{nombreAdministrador}}/editarAccesorio/" class="menu__link"
+              >Actualizar / Eliminar Accesorio</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__consultaUsuario">
+            <a href="/administracion/{{nombreAdministrador}}/consultarUsuario/" class="menu__link"
+              >Consultar Usuarios</a
+            >
+          </li>
+
+          <li class="menu__elemento menu__salir">
+            <a href="/cerrar/" class="menu__link">Salir de Sesión</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="contenido__pagina">
+        <div class="contenido__inventario">
+          <div class="inventario__encabezado">
+            <div class="encabezado__buscador">
+              <label for="buscarProducto" class="buscador__label"
+                >Buscar ID:</label
+              >
+              <input
+                class="input input__buscar"
+                type="search"
+                name="buscarProducto"
+                id="buscarProductoAdmin"
+                onkeyup="filtrarInventarioPorID()"
+              />
+            </div>
+            <div class="encabezado__titulo">
+              <h2 class="inventario__titulo">Catálogo de Productos</h2>
+            </div>
+          </div>
+          <!-- Galeria de Productos -->
+          <div><p class="accesorio_error__nombre">{{msjError}}</p></div>
+          <div class="inventario__galeria">
+            {% for producto in productosLista%}
+            <form
+              action=""
+              class="inventario__producto"
+              method="POST"
+              enctype="multipart/form-data"
+              novalidate
+            >
+              <div class="inventario__id">
+                <h4 class="producto__id">ID: {{producto[0]}}</h4>
+                <input type="hidden" name="id" value="{{producto[0]}}" />
+              </div>
+              <div class="inventario__imagen">
+                <img
+                  src="{{url_for('static',filename='imagenes/cargadas/')}}{{producto[3]}}"
+                  alt="{{producto[1]}}"
+                  class="producto__imagen"
+                />
+              </div>
+              <div class="inventario__cargarImagen">
+                <label
+                  for="accesorioImagen"
+                  class="producto__etiqueta cargarImagen__label"
+                  >Cargar Imagen</label
+                >
+                <input
+                  type="file"
+                  class="producto__cargarImagen"
+                  name="accesorioImagen"
+                  id="accesorioImagen"
+                  accept=".jpg,.jpeg,.png"
+                />
+              </div>
+              <div class="inventario__nombre">
+                <label
+                  for="accesorio1Nombre"
+                  class="producto__etiqueta nombre__label"
+                  >Nombre:
+                </label>
+                <input
+                  type="text"
+                  class="input producto__nombre"
+                  name="accesorioNombre"
+                  id="accesorioNombre"
+                  value="{{producto[1]}}"
+                />
+              </div>
+              <div class="inventario__cantidad">
+                <label
+                  for="accesorioCantidad"
+                  class="producto__etiqueta cantidad__label"
+                  >Cantidad:
+                </label>
+                <input
+                  type="number"
+                  class="input producto__cantidad"
+                  name="accesorioCantidad"
+                  id="accesorioCantidad"
+                  value="{{producto[2]}}"
+                />
+              </div>
+              <div class="inventario__boton">
+                <input
+                  class="boton boton__actualizar"
+                  name="actualizar_eliminar"
+                  type="submit"
+                  value="Actualizar"
+                />
+                <input
+                  class="boton boton__eliminar"
+                  name="actualizar_eliminar"
+                  type="submit"
+                  value="Eliminar"
+                />
+              </div>
+            </form>
+            {% endfor %}
+            <!-- Producto #1 -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{{url_for('static',filename='js/admin.js')}}"></script>
+  </body>
+</html>

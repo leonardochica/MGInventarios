@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MG Accesorios</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="logo">
+        <img
+          class="logo__imagen"
+          src="{{url_for('static',filename='imagenes/logo.png')}}"
+          alt="Este es el logo"
+        />
+      </div>
+      <div class="titulo">
+        <h1>Inventario de Accesorios</h1>
+      </div>
+    </header>
+    <div class="contenido__password">
+      <div class="contenido__imagen">
+        <img class="imagen__password" src="{{url_for('static',filename='imagenes/password.jpg')}}" alt="" />
+      </div>
+      <div class="contenido__forma">
+        <form
+          class="forma__general forma__password"
+          action=""
+          method="POST"
+          onsubmit="validarFormaPassword(event)"
+          name="formularioPassword"
+          novalidate
+        >
+          <div class="forma__titulo">
+            <h3 class="titulo__sesion">Recuperar Contraseña</h3>
+          </div>
+          <div class="forma__datos">
+            <label class="input__label label__correo" for="correo">Correo Electrónico:
+              <p class="forma__error forma__error--correo">{{mensajeCorreo}}</p>
+            </label>
+            <input
+              class="input input__correo"
+              type="email"
+              name="correo"
+              id="correo"
+              placeholder=""
+              onkeyup="validarCorreo()"
+            />
+          </div>
+          <div class="forma__boton">
+            <input class="boton boton__enviar" type="submit" value="Enviar" />
+          </div>
+          <div class="forma__link">
+            <a href="/" class="link__volver">Volver a Login</a>
+          </div>
+          <p class="mensaje__enviado">{{mensajeConfirmado}}</p>
+        </form>
+      </div>
+    </div>
+    <!-- <script src="{{url_for('static',filename='js/main.js')}}"></script> -->
+  </body>
+</html>

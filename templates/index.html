@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MG Accesorios</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}" />
+    <script
+      src="https://kit.fontawesome.com/f7e8b19d78.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="logo">
+        <img
+          class="logo__imagen"
+          src="{{url_for('static',filename='imagenes/logo.png')}}"
+          alt="Este es el logo"
+        />
+      </div>
+      <div class="titulo">
+        <h1>Inventario de Accesorios</h1>
+      </div>
+    </header>
+    <div class="contenido__principal">
+      <div class="contenido__imagen">
+        <img
+          class="imagen__principal"
+          src="{{url_for('static',filename='imagenes/pagina_principal.jpg')}}"
+          alt=""
+        />
+      </div>
+      <div class="contenido__forma">
+        <form
+          class="forma__general"
+          name="formaLogin"
+          action="/"
+          method="POST"
+          onsubmit="validarFormulario(event)"
+        >
+          <div class="forma__titulo">
+            <h3 class="titulo__sesion">Inicio de Sesión</h3>
+          </div>
+          <div class="forma__datos">
+            <label class="input__label label__usuario" for="usuario">
+              Usuario
+              <p class="forma__error forma__error--usuario">{{mensajeUsuario}}</p>
+            </label>
+            <input
+              class="input"
+              type="text"
+              name="usuario"
+              id="usuario"
+              placeholder=""
+              onkeyup="validarUsuario()"
+            />
+            <label class="input__label label__password" for="password">
+              Contraseña
+              <i class="password__icono password__icono--mostrar fas fa-eye" onclick="mostrarPwd()"></i>
+              <i class="password__icono password__icono--ocultar fas fa-eye-slash" onclick="mostrarPwd()"></i>
+              <p class="forma__error forma__error--password">{{mensajeContrasena}}</p>
+            </label>
+            <input
+            class="input input__password"
+            type="password"
+            name="password"
+            id="password"
+            placeholder=""
+            onkeyup="validarPassword()"
+            />
+            <div class="checkbox__admin">
+              <input type="checkbox" name="esAdmin" value="a" id="esAdmin" />
+              <label class="input__label" for="esAdmin"
+              >Administrador del Sistema
+              </label
+              >
+            </div>
+          </div>
+          <div class="forma__boton">
+            <input
+            class="boton boton__iniciar"
+            type="submit"
+            value="Iniciar Sesión"
+            
+            />
+          </div>
+          <div class="olvidarpassword">
+            <a class="link__olvidar" href="/recuperarcontrasena/"
+            >¿Olvidaste tu Contraseña?</a
+            >
+          </div>
+          <div class="forma__mensajes">
+            <p class="forma__mensajes--validacion">{{mensajeValidacion}}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+  </body>
+</html>
